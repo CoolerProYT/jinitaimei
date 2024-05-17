@@ -35,13 +35,13 @@ class Music extends Component
     public function uploadFile(){
         $this->validate([
             'title' => 'required',
-            'file' => 'required|mimes:mp3|max:2048',
+            'file' => 'required|mimes:mp3|max:4096',
         ],
         [
             'title.required' => '请输入标题',
             'file.required' => '请选择文件',
             'file.mimes' => '文件格式不正确',
-            'file.max' => '文件大小不能超过2M',
+            'file.max' => '文件大小不能超过4M',
         ]);
 
         $this->file->storeAs('public/music',$this->title.'.mp3');
