@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Image as ImageModel;
 use Illuminate\Support\Str;
+use Resend;
 
 class Image extends Component
 {
@@ -48,6 +49,15 @@ class Image extends Component
 
         $this->reset(['file']);
         $this->uploaded = true;
+
+        $resend = Resend::client(env('RESEND_API_KEY'));
+
+        $resend->emails->send([
+            'from' => 'new upload <approval@jinitaimei.cloud>',
+            'to' => ['veronlam1818@gmail.com'],
+            'subject' => 'New upload',
+            'text' => 'New upload, please go to the admin panel to approve.',
+        ]);
     }
 
     public function closeAlert(){
