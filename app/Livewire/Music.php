@@ -48,7 +48,7 @@ class Music extends Component
 
         MusicModel::create([
             'title' => $this->title,
-            'path' => 'storage/music/'.$this->title.'.mp3',
+            'path' => 'storage/public/music/'.$this->title.'.mp3',
         ]);
 
         $this->reset(['title','file']);

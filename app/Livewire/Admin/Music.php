@@ -33,7 +33,7 @@ class Music extends Component
     public function delete($id){
         $music = MusicModel::find($id);
 
-        Storage::delete('public/'.str_replace('storage/','',$music->path));
+        Storage::delete('public/'.str_replace('storage/public','',$music->path));
         $music->delete();
         $this->musics = MusicModel::where('verified',$this->verified)->get();
     }
